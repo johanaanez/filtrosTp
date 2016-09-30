@@ -20,11 +20,11 @@ public:
 	virtual int aply(Image *image)=0;
 	virtual ~Filter();
 	const Image& getStructuringElement() const;
-	void setStructuringElement(const Image& structuringElement);
+	void setStructuringElement(Image& structuringElement);
 	const Image& getSrc() const;
-	void setSrc(const Image& src);
+	void setSrc(Image& src);
 	const Image& getDest() const;
-	void setDest(const Image& dest);
+	void setDest(Image& dest);
 };
 
 #endif /* FILTER_H_ */

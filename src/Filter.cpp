@@ -4,11 +4,18 @@ using namespace std;
 //Constructor por movimiento
 Filter::Filter(Filter &&other){
 	this->structuringElement = std::move(other.structuringElement);
+	this->src = std::move(other.src);
+	this->dest = std::move(other.dest);
+
+	//other.structuringElement
 }
 
 //COPIA X MOVIMIENTO
 Filter& Filter::operator=(Filter &&other){
 	this->structuringElement = std::move(other.structuringElement);
+	this->src = std::move(other.src);
+	this->dest = std::move(other.dest);
+
 	return *this;
 }
 
@@ -16,24 +23,25 @@ const Image& Filter::getStructuringElement() const {
 	return structuringElement;
 }
 
-void Filter::setStructuringElement(const Image& structuringElement) {
-	//this->structuringElement = std::move(*structuringElement);
+void Filter::setStructuringElement(Image& structuringElement) {
+	this->structuringElement = std::move(structuringElement);
 }
 
-/*const Image& Image:: getSrc() const{
+const Image& Filter::getSrc() const{
 	return this->src;
 }
-void Image::setSrc(const Image& src){
-	//this->src = src;
+
+void Filter::setSrc(Image& src){
+	this->src = std::move(src);
 }
 
-const Image& Image::getDest() const{
+const Image& Filter::getDest() const{
 	return this->dest;
 }
 
-void Image::setDest(const Image& dest){
-
-}*/
+void Filter::setDest(Image& dest){
+	this->dest = std::move(dest);
+}
 
 
 Filter::~Filter() {
