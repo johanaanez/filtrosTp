@@ -9,6 +9,7 @@ namespace DilationFilter{
 class DilationFilter:  public Filter {
 public:
 	DilationFilter();
+	int aply(Image *image);
 	virtual ~DilationFilter();
 };
 

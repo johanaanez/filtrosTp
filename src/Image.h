@@ -9,14 +9,12 @@ private:
 
 	int rows;
 	int columns;
-	vector<vector<char> > representation(char, vector<char>(columns));
-
-	Image(const Image&)=delete;
-	Image(Image&& other);
-
+	vector<vector<char> > representation;
 
 public:
 	Image();
+	Image(const Image &other) = delete;
+	Image(Image&& other);
 	Image(int rows, int columns);
 	Image& operator=(Image &&other);
 	int transform(char zero, char one);

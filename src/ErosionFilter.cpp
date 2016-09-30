@@ -1,10 +1,3 @@
-/*
- * ErosionFilter.cpp
- *
- *  Created on: Sep 28, 2016
- *      Author: pdg
- */
-
 #include "ErosionFilter.h"
 
 namespace ErosionFilter {
@@ -12,6 +5,11 @@ namespace ErosionFilter {
 
 ErosionFilter::~ErosionFilter() {
 	// TODO Auto-generated destructor stub
+}
+
+int ErosionFilter::aply(Image *image){
+
+	return 0;
 }
 
 } /* namespace ErosionFilter */

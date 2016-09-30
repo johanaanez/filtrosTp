@@ -10,16 +10,21 @@ class Filter {
 
 private:
 	Image structuringElement;
-	Filter(const Filter&)=delete;
-	Filter(Filter&& other);
+	Image src;
+	Image dest;
 
 public:
 	Filter& operator=(Filter &&other);
+	Filter(const Filter &other) = delete;
+	Filter(Filter&& other);
 	virtual int aply(Image *image)=0;
 	virtual ~Filter();
 	const Image& getStructuringElement() const;
 	void setStructuringElement(const Image& structuringElement);
-
+	const Image& getSrc() const;
+	void setSrc(const Image& src);
+	const Image& getDest() const;
+	void setDest(const Image& dest);
 };
 
 #endif /* FILTER_H_ */

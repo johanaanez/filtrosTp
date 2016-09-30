@@ -1,10 +1,3 @@
-/*
- * ErosionFilter.h
- *
- *  Created on: Sep 28, 2016
- *      Author: pdg
- */
-
 #ifndef EROSIONFILTER_H_
 #define EROSIONFILTER_H_
 
@@ -15,6 +8,7 @@ namespace ErosionFilter {
 class ErosionFilter: public Filter {
 public:
 	ErosionFilter();
+	int aply(Image *image);
 	virtual ~ErosionFilter();
 };
 
