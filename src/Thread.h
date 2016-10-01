@@ -2,7 +2,6 @@
 #define THREAD_H_
 
 #include <iostream>
-#include <vector>
 #include <thread>
 
 namespace Thread{

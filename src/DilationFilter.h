@@ -9,8 +9,8 @@ namespace DilationFilter{
 class DilationFilter:  public Filter {
 
 private:
-	int dilateBorder();
-	int dilate();
+	int dilateBorder(int i, int j);
+	int dilate(int i, int j);
 
 public:
 	DilationFilter();
