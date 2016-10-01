@@ -10,7 +10,6 @@ CPP_SRCS += \
 ../src/Image.cpp \
 ../src/Pattern.cpp \
 ../src/Thread.cpp \
-../src/filtrosTp.cpp \
 ../src/tp.cpp 
 
 OBJS += \
@@ -20,7 +19,6 @@ OBJS += \
 ./src/Image.o \
 ./src/Pattern.o \
 ./src/Thread.o \
-./src/filtrosTp.o \
 ./src/tp.o 
 
 CPP_DEPS += \
@@ -30,7 +28,6 @@ CPP_DEPS += \
 ./src/Image.d \
 ./src/Pattern.d \
 ./src/Thread.d \
-./src/filtrosTp.d \
 ./src/tp.d 
 
 

@@ -31,6 +31,7 @@ int DilationFilter::aply(Image *image){
 }
 
 int DilationFilter::dilateBorder(int i, int j){
+
 	this->src.setPixel(i,j,'#');
 	return 0;
 }

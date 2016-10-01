@@ -96,6 +96,36 @@ bool Image::isBorder(const int i,const int j) const{
 	return false;
 }
 
+bool Image::isTopBorder(const int i,const int j) const{
+	if(i==0){
+		return true;
+	}
+	return false;
+}
+
+bool Image::isBottomBorder(const int i,const int j) const{
+	if(i== (this->columns-1) ){
+		return true;
+	}
+	return false;
+}
+
+bool Image::isRightBorder(const int i,const int j) const{
+	if(j == (this->getRows()-1) ){
+		return true;
+	}
+	return false;
+}
+
+bool Image::isLeftBorder(const int i,const int j) const{
+	if( j==0){
+			return true;
+		}
+	return false;
+}
+
+
+
 const char Image::getOnes() const{
     return ones;
 }
