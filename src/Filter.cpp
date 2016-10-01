@@ -43,6 +43,17 @@ void Filter::setDest(Image& dest){
 	this->dest = std::move(dest);
 }
 
+bool Filter::isTotalUnion(int x, int y){
+	/*if(){
+		return true;
+	}*/
+
+	return false;
+}
+bool Filter::isPartialUnion(int x, int y){
+	return false;
+}
+
 
 Filter::~Filter() {
 

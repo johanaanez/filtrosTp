@@ -25,6 +25,8 @@ public:
 	void setSrc(Image& src);
 	const Image& getDest() const;
 	void setDest(Image& dest);
+	bool isTotalUnion(int x, int y);
+	bool isPartialUnion(int x, int y);
 };
 
 #endif /* FILTER_H_ */

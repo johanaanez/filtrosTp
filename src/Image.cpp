@@ -3,11 +3,18 @@
 Image::Image() {
 	rows= 0 ;
 	columns = 0;
+
 }
 
 Image::~Image() {
 	rows= 0 ;
 	columns = 0;
+}
+
+Image::Image(int rows, int columns, vector<vector<char>> matrix ){
+	this->representation = matrix;
+	this->rows = rows;
+	this->columns = columns;
 }
 
 int Image::transform(char zero, char one){
@@ -37,11 +44,11 @@ void Image::setRows(int rows) {
 Image& Image::operator=(Image &&other){
 	this->columns = other.columns;
 	this->rows = other.rows;
-	//this->representation = std::move( other.representation);
+	this->representation =  other.representation;
 
 	other.rows = 0;
 	other.columns = 0;
-	//other.representation = nullptr;
+	other.representation = vector< vector<char> >() ;
 
 	return *this;
 }
@@ -50,13 +57,58 @@ Image& Image::operator=(Image &&other){
 Image::Image(Image &&other){
 	this->columns = other.columns;
 	this->rows = other.rows;
-	//this->representation(char, vector<char>) = other.representation();
+	this->representation = other.representation;
 
 	other.rows = 0;
 	other.columns = 0;
-	//other.representation = nullptr;
-
+	other.representation = vector< vector<char> >() ;
 }
+
+vector<vector<char> > Image::getRepresentation() const{
+    return representation;
+}
+
+void Image::setRepresentation(vector<vector<char> > representation){
+    this->representation = representation;
+}
+
+char Image::getCenter(){
+	return representation[rows/2][columns /2];
+}
+
+bool Image::isCenter(int i,int j){
+	if (rows%2 !=0 && columns %2 !=0){
+		int centerX = rows /2;
+		int centerY = columns /2;
+
+		if (i== centerX && j== centerY){
+			return true;
+		}
+	}
+
+	return false;
+}
+
+bool Image::isBorder(int i, int j){
+	if(i == (rows-1) || i==0 || j==0 || j==(columns-1)){
+		return true;
+	}
+	return false;
+}
+
+const char Image::getOnes() const
+{
+    return ones;
+}
+
+const char Image::getZeros() const
+{
+    return zeros;
+}
+
+
+
+
 
 
 

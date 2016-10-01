@@ -1,9 +1,10 @@
 #include <iostream>
 using namespace std;
-#include <thread>
 
-int main() {
-	thread ho;
+
+int main(int argc, char *argv[]) {
+
+
 	cout << "!!!Hello World!!!" << endl; // prints !!!Hello World!!!
 	return 0;
 }
