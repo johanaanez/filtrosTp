@@ -1,6 +1,19 @@
 #include "DilationFilter.h"
 
-namespace DilationFilter {
+//Constructor x movimiento heredado
+DilationFilter::DilationFilter(DilationFilter&& o): Filter(std::move(o)){
+
+}
+
+
+//COPIA X MOVIMIENTO
+DilationFilter& DilationFilter::operator=(DilationFilter &&other){
+	this->structuringElement = std::move(other.structuringElement);
+	this->src = std::move(other.src);
+	this->dest = std::move(other.dest);
+
+	return *this;
+}
 
 DilationFilter::~DilationFilter() {
 
@@ -83,4 +96,4 @@ int DilationFilter::dilate(int x, int y){
 	return 0;
 }
 
-} /* namespace ErosionFilter */
+

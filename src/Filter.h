@@ -14,10 +14,12 @@ protected:
 	Image dest;
 
 public:
-	Filter& operator=(Filter &&other);
-	Filter(const Filter &other) = delete;
-	Filter(Filter&& other);
-	virtual int aply(Image *image)=0;
+	Filter();
+	Filter(Image &&structuringElement, Image &&src);
+	Filter(Filter&& other);     				           //Constructor x movimiento
+	Filter(const Filter &other) = delete;                  //Constructor x copia
+	Filter& operator=(Filter &&other);                     //asignacion x movimiento;
+	Filter& operator=(const Filter &other)=delete;         //Asignacion x copia
 	virtual ~Filter();
 	const Image& getStructuringElement() const;
 	void setStructuringElement(Image& structuringElement);

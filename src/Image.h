@@ -17,10 +17,19 @@ private:
 
 public:
 	Image();
-	Image(const Image &other) = delete;
-	Image(Image&& other);
 	Image(int rows, int columns, vector<vector<char> > matrix );
+	//CONSTRUCTOR POR MOVIMIENTO
+	Image(Image&& other);
+
+	//Constructor por copia
+	Image(const Image &other) = delete;
+
+	//Asignacion x copia
+	Image& operator=(const Image &other)=delete;
+
+	//ASIGNACION X MOVIMIENTO
 	Image& operator=(Image &&other);
+
 	int transform(char zero, char one);
 	virtual ~Image();
 	int getColumns() const;

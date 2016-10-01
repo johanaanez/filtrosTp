@@ -1,18 +1,38 @@
 #include <iostream>
 using namespace std;
 #include <vector>
-
+#include "DilationFilter.h"
+#include "Filter.h"
+#include "Image.h"
 
 int main(int argc, char *argv[]) {
 
-	int rows=6;
-	int columns=6;
+	int rows=3;
+	int columns=3;
+	vector<vector<char> > pattern(rows, std::vector<char>(columns));
+	vector<char> row1=  {'.','#','.'};
+	pattern.at(0) = row1;
+	vector<char> row2=  {'#','#','#'};
+	pattern.at(1) =row2;
+	vector<char> row3=  {'.','#','.'};
+	pattern.at(2) = row3;
+
+	for(int i=0;i <rows; i++){
+		for(int j=0; j<columns; j++){
+			cout<<pattern[i][j];
+		}
+		cout<<endl;
+	}
+
+
+	rows=6;
+	columns=6;
 	vector<vector<char> > matrix(rows, std::vector<char>(columns));
-	vector<char> row1=  {'.','.','.','.','.', '.'};
+	row1=  {'.','.','.','.','.', '.'};
 	matrix.at(0) = row1;
-	vector<char> row2=  {'.','#','.','.','.', '.'};
+	row2=  {'.','#','.','.','.', '.'};
 	matrix.at(1) =row2;
-	vector<char> row3=  {'.','.','.','.','.', '.'};
+	row3=  {'.','.','.','.','.', '.'};
 	matrix.at(2) = row3;
 	vector<char> row4=  {'.','.','.','.','.', '.'};
 	matrix.at(3) = row4;
@@ -27,6 +47,13 @@ int main(int argc, char *argv[]) {
 		}
 		cout<<endl;
 	}
+
+	::Image patron(3,3,pattern);
+	::Image image(6,6,matrix);
+
+	//Filter *f = new Filter();     //EN QUE MIERDA DE LENGUAJE ESTO FALLA!!!
+	//Filter g = Filter();
+	//Filter h(patron, image);
 
 	cout << "!!!Hello World!!!" << endl; // prints !!!Hello World!!!
 	return 0;

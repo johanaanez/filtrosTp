@@ -1,13 +1,20 @@
 #include "Filter.h"
 using namespace std;
 
+Filter::Filter(Image &&structuringElement, Image &&src){
+	this->structuringElement = std::move(structuringElement);
+	this->src = std::move(src);
+}
+
 //Constructor por movimiento
 Filter::Filter(Filter &&other){
 	this->structuringElement = std::move(other.structuringElement);
 	this->src = std::move(other.src);
 	this->dest = std::move(other.dest);
 
-	//other.structuringElement
+	other.structuringElement = Image();
+	other.src = Image();
+	other.dest = Image();
 }
 
 //COPIA X MOVIMIENTO
@@ -15,6 +22,10 @@ Filter& Filter::operator=(Filter &&other){
 	this->structuringElement = std::move(other.structuringElement);
 	this->src = std::move(other.src);
 	this->dest = std::move(other.dest);
+
+	other.structuringElement = Image();
+	other.src = Image();
+	other.dest = Image();
 
 	return *this;
 }

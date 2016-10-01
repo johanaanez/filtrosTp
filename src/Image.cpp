@@ -5,16 +5,41 @@ Image::Image() {
 	columns = 0;
 }
 
-Image::~Image() {
-	rows= 0 ;
-	columns = 0;
-	representation = vector< vector<char> >() ;
-}
-
 Image::Image(int rows, int columns, vector<vector<char>> matrix ){
 	this->representation = matrix;
 	this->rows = rows;
 	this->columns = columns;
+}
+
+
+//Constructor por movimiento
+Image::Image(Image &&other){
+	this->columns = other.columns;
+	this->rows = other.rows;
+	this->representation = other.representation;
+
+	other.rows = 0;
+	other.columns = 0;
+	other.representation = vector< vector<char> >() ;
+}
+
+//Asignacion x movimiento
+Image& Image::operator=(Image &&other){
+	this->columns = other.columns;
+	this->rows = other.rows;
+	this->representation =  other.representation;
+
+	other.rows = 0;
+	other.columns = 0;
+	other.representation = vector< vector<char> >() ;
+
+	return *this;
+}
+
+Image::~Image() {
+	rows= 0 ;
+	columns = 0;
+	representation = vector< vector<char> >() ;
 }
 
 int Image::transform(char zero, char one){
@@ -40,29 +65,9 @@ void Image::setRows(int rows) {
 	this->rows = rows;
 }
 
-//Asignacion x movimiento
-Image& Image::operator=(Image &&other){
-	this->columns = other.columns;
-	this->rows = other.rows;
-	this->representation =  other.representation;
 
-	other.rows = 0;
-	other.columns = 0;
-	other.representation = vector< vector<char> >() ;
 
-	return *this;
-}
 
-//Constructor por movimiento
-Image::Image(Image &&other){
-	this->columns = other.columns;
-	this->rows = other.rows;
-	this->representation = other.representation;
-
-	other.rows = 0;
-	other.columns = 0;
-	other.representation = vector< vector<char> >() ;
-}
 
 vector<vector<char> > Image::getRepresentation() const{
     return representation;

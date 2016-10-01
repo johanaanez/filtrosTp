@@ -3,7 +3,7 @@
 
 #include "Filter.h"
 
-namespace ErosionFilter {
+
 
 class ErosionFilter: public Filter {
 public:
@@ -12,6 +12,6 @@ public:
 	virtual ~ErosionFilter();
 };
 
-} /* namespace ErosionFilter */
+
 
 #endif /* EROSIONFILTER_H_ */
