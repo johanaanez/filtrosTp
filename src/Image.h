@@ -31,8 +31,9 @@ public:
     void setRepresentation(vector<vector<char> > representation);
     const char getOnes() const;
     const char getZeros() const;
-    char getCenter();
-    bool isCenter(int i,int j);
+    char getCenter()const;
+    bool isCenter(int i,int j)const;
+    bool isCorner(int i,int j)const;
     bool isBorder(const int i,const int j) const;
     bool isTopBorder(const int i,const int j) const;
     bool isRightBorder(const int i,const int j) const;

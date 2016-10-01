@@ -3,12 +3,12 @@
 Image::Image() {
 	rows= 0 ;
 	columns = 0;
-
 }
 
 Image::~Image() {
 	rows= 0 ;
 	columns = 0;
+	representation = vector< vector<char> >() ;
 }
 
 Image::Image(int rows, int columns, vector<vector<char>> matrix ){
@@ -72,11 +72,11 @@ void Image::setRepresentation(vector<vector<char> > representation){
     this->representation = representation;
 }
 
-char Image::getCenter(){
+char Image::getCenter()const{
 	return representation[rows/2][columns /2];
 }
 
-bool Image::isCenter(int i,int j){
+bool Image::isCenter(int i,int j)const{
 	if (rows%2 !=0 && columns %2 !=0){
 		int centerX = rows /2;
 		int centerY = columns /2;
@@ -104,14 +104,14 @@ bool Image::isTopBorder(const int i,const int j) const{
 }
 
 bool Image::isBottomBorder(const int i,const int j) const{
-	if(i== (this->columns-1) ){
+	if(i== (this->rows-1) ){
 		return true;
 	}
 	return false;
 }
 
 bool Image::isRightBorder(const int i,const int j) const{
-	if(j == (this->getRows()-1) ){
+	if(j == (this->columns()-1) ){
 		return true;
 	}
 	return false;
@@ -124,7 +124,15 @@ bool Image::isLeftBorder(const int i,const int j) const{
 	return false;
 }
 
-
+bool Image::isCorner(const int i,const int j) const{
+	if(( isTopBorder(i,j)    && isLeftBorder(i,j)  ) ||
+	   ( isTopBorder(i,j)    && isRightBorder(i,j) ) ||
+	   ( isBottomBorder(i,j) && isLeftBorder(i,j)  ) ||
+	   ( isBottomBorder(i,j) && isRightBorder(i,j) ) ){
+		return true;
+	}
+	return false;
+}
 
 const char Image::getOnes() const{
     return ones;
