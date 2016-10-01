@@ -104,6 +104,10 @@ const char Image::getZeros() const{
     return zeros;
 }
 
+void Image::setPixel(int posX, int posY, char c){
+	this->representation.at(posX).at(posY) = c;
+}
+
 
 
 

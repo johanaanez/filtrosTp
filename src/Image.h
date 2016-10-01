@@ -34,6 +34,7 @@ public:
     char getCenter();
     bool isCenter(int i,int j);
     bool isBorder(const int i,const int j) const;
+    void setPixel(int posX, int posY, char c);
 };
 
 #endif /* IMAGE_H_ */

@@ -12,32 +12,32 @@ int DilationFilter::aply(Image *image){
 	char ones = this->getStructuringElement().getOnes();
 
 	for(int i=0;i <rows; i++){
-			for(int j=0; j< columns ; j++){
-				char c= this->getSrc().getRepresentation()[i][j];
-				if( c== ones){
-					if(this->getSrc().isBorder(i,j)){
-
-
-					}
-					else{
-
-					}
-
+		for(int j=0; j< columns ; j++){
+			char c= this->getSrc().getRepresentation()[i][j];
+			if( c== ones){
+				if(this->getSrc().isBorder(i,j)){
+					dilateBorder();
 				}
-			}
+				else{
+					dilate();
+				}
 
+			}
 		}
 
-	return 0;
-}
-
-int dilateBorder(){
-
+	}
 
 	return 0;
 }
 
-int dilate(){
+int DilationFilter::dilateBorder(){
+
+
+
+	return 0;
+}
+
+int DilationFilter::dilate(){
 
 
 	return 0;

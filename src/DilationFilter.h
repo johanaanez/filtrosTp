@@ -7,6 +7,11 @@
 namespace DilationFilter{
 
 class DilationFilter:  public Filter {
+
+private:
+	int dilateBorder();
+	int dilate();
+
 public:
 	DilationFilter();
 	int aply(Image *image);
