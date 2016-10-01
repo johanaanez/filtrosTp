@@ -111,7 +111,7 @@ bool Image::isBottomBorder(const int i,const int j) const{
 }
 
 bool Image::isRightBorder(const int i,const int j) const{
-	if(j == (this->columns()-1) ){
+	if(j == (this->columns-1) ){
 		return true;
 	}
 	return false;

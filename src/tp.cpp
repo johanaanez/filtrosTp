@@ -1,5 +1,6 @@
 #include <iostream>
 using namespace std;
+#include <vector>
 
 
 int main(int argc, char *argv[]) {
@@ -21,7 +22,7 @@ int main(int argc, char *argv[]) {
 	matrix.at(5) = row6;
 
 	for(int i=0;i <rows; i++){
-		for(j=0; j<columns; j++){
+		for(int j=0; j<columns; j++){
 			cout<<matrix[i][j];
 		}
 		cout<<endl;
