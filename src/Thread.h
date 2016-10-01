@@ -11,12 +11,12 @@ namespace Thread{
 class Thread {
 
 private:
-      //std::thread thread;
+      std::thread thread;
 
 public:
 	Thread();
 	virtual ~Thread();
-	//Thread(Thread &&other);
+	Thread(Thread &&other);
 	void start();
 };
 
