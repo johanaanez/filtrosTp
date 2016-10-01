@@ -33,7 +33,7 @@ public:
     const char getZeros() const;
     char getCenter();
     bool isCenter(int i,int j);
-    bool isBorder(int i, int j);
+    bool isBorder(const int i,const int j) const;
 };
 
 #endif /* IMAGE_H_ */

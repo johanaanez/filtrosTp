@@ -89,20 +89,18 @@ bool Image::isCenter(int i,int j){
 	return false;
 }
 
-bool Image::isBorder(int i, int j){
-	if(i == (rows-1) || i==0 || j==0 || j==(columns-1)){
+bool Image::isBorder(const int i,const int j) const{
+	if(i == (this->getRows()-1) || i==0 || j==0 || j==(this->getColumns()-1)){
 		return true;
 	}
 	return false;
 }
 
-const char Image::getOnes() const
-{
+const char Image::getOnes() const{
     return ones;
 }
 
-const char Image::getZeros() const
-{
+const char Image::getZeros() const{
     return zeros;
 }
 

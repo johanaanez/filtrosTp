@@ -9,16 +9,37 @@ DilationFilter::~DilationFilter() {
 int DilationFilter::aply(Image *image){
 	int rows = this->getSrc().getRows();
 	int columns = this->getSrc().getColumns();
+	char ones = this->getStructuringElement().getOnes();
 
 	for(int i=0;i <rows; i++){
 			for(int j=0; j< columns ; j++){
 				char c= this->getSrc().getRepresentation()[i][j];
-				if( c=='#'){
+				if( c== ones){
+					if(this->getSrc().isBorder(i,j)){
+
+
+					}
+					else{
+
+					}
 
 				}
 			}
-			cout<<endl;
+
 		}
+
+	return 0;
+}
+
+int dilateBorder(){
+
+
+	return 0;
+}
+
+int dilate(){
+
+
 	return 0;
 }
 
