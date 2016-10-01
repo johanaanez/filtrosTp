@@ -8,7 +8,7 @@
 
 class Filter {
 
-private:
+protected:
 	Image structuringElement;
 	Image src;
 	Image dest;

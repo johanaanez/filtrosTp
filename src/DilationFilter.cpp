@@ -31,15 +31,12 @@ int DilationFilter::aply(Image *image){
 }
 
 int DilationFilter::dilateBorder(){
-
-
-
+	this->src.setPixel(1,1,'#');
 	return 0;
 }
 
 int DilationFilter::dilate(){
-
-
+	this->src.setPixel(1,1,'#');
 	return 0;
 }
 
