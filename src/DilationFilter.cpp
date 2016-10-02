@@ -5,12 +5,10 @@ DilationFilter::DilationFilter(DilationFilter&& o): Filter(std::move(o)){
 
 }
 
-DilationFilter::DilationFilter(Image&& structuringElement, Image& src){
-	this->structuringElement = std::move(structuringElement);
+DilationFilter::DilationFilter(Image& structuringElement, Image& src){
+	this->structuringElement =  Image(structuringElement.getRows(),structuringElement.getColumns(), structuringElement.getRepresentation());
 	this->src = Image(src.getRows(),src.getColumns(), src.getRepresentation());
 	this->dest = Image(src.getRows(),src.getColumns(), src.getRepresentation());
-
-
 }
 
 //COPIA X MOVIMIENTO
@@ -23,7 +21,9 @@ DilationFilter& DilationFilter::operator=(DilationFilter &&other){
 }
 
 DilationFilter::~DilationFilter() {
-
+	this->src = Image();
+	this->dest = Image();
+	this->structuringElement = Image();
 }
 
 int DilationFilter::aply(){
@@ -55,14 +55,14 @@ int DilationFilter::aply(){
 }
 
 int DilationFilter::dilateBorder(int x, int y){
-	int dimensionX = this->structuringElement.getRows();
+	int dimension = this->structuringElement.getRows();
 	int dimensionY = this->structuringElement.getRows();
-	int resta = dimensionX/2;
+	int resta = dimension/2;
 	int posX = x-resta;
 	int posY = y-resta;
 
 	if(this->src.isCorner(x,y)){
-		dimensionX -= resta; //si el patron es de 3X3
+		int dimensionX = dimension- resta; //si el patron es de 3X3
 		dimensionY -= resta;
 	}
 
@@ -74,8 +74,8 @@ int DilationFilter::dilateBorder(int x, int y){
 	}
 
 	if(this->src.isTopBorder(x,y)){
-		for(int i=1;i <3; i++){
-			for(int j=1; j< 3 ; j++){
+		for(int i=resta;i <dimension; i++){
+			for(int j=resta; j< dimension ; j++){
 				char c= this->getStructuringElement().getRepresentation()[i][j];
 				this->dest.setPixel(posX,posY,c);
 				posY++;
@@ -91,6 +91,8 @@ int DilationFilter::dilateBorder(int x, int y){
 		}
 
 		int posX = x-resta;
+
+		//DESDE QUE POSICION DEL PATRON HASTA CUAL SE VA A COPIAR?
 		for(int i=0;i <2; i++){
 			for(int j=1; j< 3 ; j++){
 				char c= this->getStructuringElement().getRepresentation()[i][j];

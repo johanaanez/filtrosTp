@@ -8,6 +8,10 @@
 
 class Filter {
 
+private:
+	int erosionBorder(int i, int j);
+	int erosion(int i, int j);
+
 protected:
 	Image structuringElement;
 	Image src;
@@ -16,7 +20,7 @@ protected:
 public:
 	Filter();
 	Filter(int x);
-	Filter(Image &&structuringElement, Image &&src);
+	Filter(Image& structuringElement, Image& src);
 	Filter(Filter&& other);     				           //Constructor x movimiento
 	Filter(const Filter &other) = delete;                  //Constructor x copia
 	Filter& operator=(Filter &&other);                     //asignacion x movimiento;
@@ -30,6 +34,7 @@ public:
 	void setDest(Image& dest);
 	bool isTotalUnion(int x, int y);
 	bool isPartialUnion(int x, int y);
+	virtual int aply();
 };
 
 #endif /* FILTER_H_ */

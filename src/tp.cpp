@@ -36,7 +36,7 @@ int main(int argc, char *argv[]) {
 	Image patron(3,3,pattern);
 	Image image(6,6,matrix);
 
-	DilationFilter *f = new DilationFilter((Image&&)patron,image);
+	DilationFilter *f = new DilationFilter(patron,image);
 	//f->setSrc(image);
 	//f->setStructuringElement(patron);
 
@@ -56,6 +56,8 @@ int main(int argc, char *argv[]) {
 			}
 			cout<<endl;
 	}
+
+	Filter *erosion = new Filter(patron,image);
 
 
 	return 0;
