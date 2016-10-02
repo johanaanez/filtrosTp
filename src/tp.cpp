@@ -20,17 +20,17 @@ int main(int argc, char *argv[]) {
 	rows=6;
 	columns=6;
 	vector<vector<char> > matrix(rows, std::vector<char>(columns));
-	row1=  {'.','.','.','.','.', '.'};
+	row1=  {'#','.','.','.','.', '#'};
 	matrix.at(0) = row1;
-	row2=  {'.','#','.','.','.', '.'};
+	row2=  {'.','.','.','.','.', '.'};
 	matrix.at(1) =row2;
-	row3=  {'.','.','.','.','.', '.'};
+	row3=  {'.','.','#','.','.', '.'};
 	matrix.at(2) = row3;
 	vector<char> row4=  {'.','.','.','.','.', '.'};
 	matrix.at(3) = row4;
-	vector<char> row5=  {'.','.','.','#','.', '.'};
+	vector<char> row5=  {'.','.','.','.','.', '.'};
 	matrix.at(4) = row5;
-	vector<char> row6=  {'.','.','.','.','.', '.'};
+	vector<char> row6=  {'#','.','.','.','.', '#'};
 	matrix.at(5) = row6;
 
 	Image patron(3,3,pattern);
@@ -40,8 +40,14 @@ int main(int argc, char *argv[]) {
 	//f->setSrc(image);
 	//f->setStructuringElement(patron);
 
+	for(int i=0;i <rows; i++){
+				for(int j=0; j<columns; j++){
+					cout<<f->getSrc().getRepresentation()[i][j];
+				}
+				cout<<endl;
+		}
 
-
+	cout<<"\n";
 	f->aply();
 
 	for(int i=0;i <rows; i++){

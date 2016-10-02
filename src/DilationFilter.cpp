@@ -10,6 +10,7 @@ DilationFilter::DilationFilter(Image&& structuringElement, Image& src){
 	this->src = Image(src.getRows(),src.getColumns(), src.getRepresentation());
 	this->dest = Image(src.getRows(),src.getColumns(), src.getRepresentation());
 
+
 }
 
 //COPIA X MOVIMIENTO
@@ -79,6 +80,7 @@ int DilationFilter::dilateBorder(int x, int y){
 			posY++;
 		}
 		posX++;
+		posY= posY- dimensionY;
 	}
 
 	return 0;
