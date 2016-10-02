@@ -5,6 +5,10 @@ DilationFilter::DilationFilter(DilationFilter&& o): Filter(std::move(o)){
 
 }
 
+DilationFilter::DilationFilter(Image&& structuringElement, Image&& src){
+	this->structuringElement = std::move(structuringElement);
+	this->src = std::move(src);
+}
 
 //COPIA X MOVIMIENTO
 DilationFilter& DilationFilter::operator=(DilationFilter &&other){

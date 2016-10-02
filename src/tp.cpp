@@ -36,9 +36,23 @@ int main(int argc, char *argv[]) {
 	Image patron(3,3,pattern);
 	Image image(6,6,matrix);
 
-	Filter *f = new Filter((Image&&)patron,(Image&&)image);
+	DilationFilter *f = new DilationFilter((Image&&)patron,(Image&&)image);
 	//f->setSrc(image);
 	//f->setStructuringElement(patron);
+
+	for(int i=0;i <rows; i++){
+			for(int j=0; j<columns; j++){
+				cout<<f->getSrc().getRepresentation()[i][j];
+			}
+			cout<<endl;
+	}
+
+	for(int i=0;i <3; i++){
+			for(int j=0; j<3; j++){
+				cout<<f->getStructuringElement().getRepresentation()[i][j];
+			}
+			cout<<endl;
+	}
 
 
 	return 0;
