@@ -51,13 +51,23 @@ int main(int argc, char *argv[]) {
 	f->aply();
 
 	for(int i=0;i <rows; i++){
-			for(int j=0; j<columns; j++){
-				cout<<f->getDest().getRepresentation()[i][j];
-			}
-			cout<<endl;
+		for(int j=0; j<columns; j++){
+			cout<<f->getDest().getRepresentation()[i][j];
+		}
+		cout<<endl;
 	}
 
 	Filter *erosion = new Filter(patron,image);
+	cout<<"\n";
+	erosion->aply();
+
+	for(int i=0;i <rows; i++){
+		for(int j=0; j<columns; j++){
+			cout<<erosion->getDest().getRepresentation()[i][j];
+		}
+		cout<<endl;
+	}
+
 
 
 	return 0;
