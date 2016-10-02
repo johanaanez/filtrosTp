@@ -1,7 +1,11 @@
 #include "Filter.h"
 using namespace std;
 
-Filter::Filter(Image &&structuringElement, Image &&src){
+Filter::Filter(){
+
+}
+
+Filter::Filter(Image&& structuringElement, Image&& src){
 	this->structuringElement = std::move(structuringElement);
 	this->src = std::move(src);
 }

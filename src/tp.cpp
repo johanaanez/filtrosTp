@@ -17,14 +17,6 @@ int main(int argc, char *argv[]) {
 	vector<char> row3=  {'.','#','.'};
 	pattern.at(2) = row3;
 
-	for(int i=0;i <rows; i++){
-		for(int j=0; j<columns; j++){
-			cout<<pattern[i][j];
-		}
-		cout<<endl;
-	}
-
-
 	rows=6;
 	columns=6;
 	vector<vector<char> > matrix(rows, std::vector<char>(columns));
@@ -41,21 +33,14 @@ int main(int argc, char *argv[]) {
 	vector<char> row6=  {'.','.','.','.','.', '.'};
 	matrix.at(5) = row6;
 
-	for(int i=0;i <rows; i++){
-		for(int j=0; j<columns; j++){
-			cout<<matrix[i][j];
-		}
-		cout<<endl;
-	}
+	Image patron(3,3,pattern);
+	Image image(6,6,matrix);
 
-	::Image patron(3,3,pattern);
-	::Image image(6,6,matrix);
+	Filter *f = new Filter((Image&&)patron,(Image&&)image);
+	//f->setSrc(image);
+	//f->setStructuringElement(patron);
 
-	//Filter *f = new Filter();     //EN QUE MIERDA DE LENGUAJE ESTO FALLA!!!
-	//Filter g = Filter();
-	//Filter h(patron, image);
 
-	cout << "!!!Hello World!!!" << endl; // prints !!!Hello World!!!
 	return 0;
 }
 

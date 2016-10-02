@@ -15,6 +15,7 @@ protected:
 
 public:
 	Filter();
+	Filter(int x);
 	Filter(Image &&structuringElement, Image &&src);
 	Filter(Filter&& other);     				           //Constructor x movimiento
 	Filter(const Filter &other) = delete;                  //Constructor x copia
