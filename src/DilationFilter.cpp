@@ -5,9 +5,11 @@ DilationFilter::DilationFilter(DilationFilter&& o): Filter(std::move(o)){
 
 }
 
-DilationFilter::DilationFilter(Image&& structuringElement, Image&& src){
+DilationFilter::DilationFilter(Image&& structuringElement, Image& src){
 	this->structuringElement = std::move(structuringElement);
-	this->src = std::move(src);
+	this->src = Image(src.getRows(),src.getColumns(), src.getRepresentation());
+	this->dest = Image(src.getRows(),src.getColumns(), src.getRepresentation());
+
 }
 
 //COPIA X MOVIMIENTO
@@ -23,7 +25,7 @@ DilationFilter::~DilationFilter() {
 
 }
 
-int DilationFilter::aply(Image *image){
+int DilationFilter::aply(){
 	int rows = this->getSrc().getRows();
 	int columns = this->getSrc().getColumns();
 	char center = this->structuringElement.getCenter();
@@ -37,7 +39,7 @@ int DilationFilter::aply(Image *image){
 		for(int j=0; j< columns ; j++){
 			char c= this->getSrc().getRepresentation()[i][j];
 			if( c== center){
-				if(this->getSrc().isBorder(i,j) && this->structuringElement.getColumns()>1){
+				if(this->src.isBorder(i,j) && this->structuringElement.getColumns()>1){
 					dilateBorder(i,j);
 				}
 				else{
@@ -73,7 +75,7 @@ int DilationFilter::dilateBorder(int x, int y){
 	for(int i=0;i <dimensionX; i++){
 		for(int j=0; j< dimensionY ; j++){
 			char c= this->getStructuringElement().getRepresentation()[i][j];
-			this->src.setPixel(posX,posY,c);
+			this->dest.setPixel(posX,posY,c);
 			posY++;
 		}
 		posX++;
@@ -91,10 +93,11 @@ int DilationFilter::dilate(int x, int y){
 	for(int i=0;i <dimension; i++){
 		for(int j=0; j< dimension ; j++){
 			char c= this->getStructuringElement().getRepresentation()[i][j];
-			this->src.setPixel(posX,posY,c);
+			this->dest.setPixel(posX,posY,c);
 			posY++;
 		}
 		posX++;
+		posY= y-resta;
 	}
 
 	return 0;

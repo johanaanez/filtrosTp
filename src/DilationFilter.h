@@ -13,9 +13,9 @@ public:
 	DilationFilter();
 	DilationFilter(DilationFilter&& other);
 	DilationFilter& operator=(DilationFilter &&other);
-	DilationFilter(Image &&structuringElement, Image &&src);
+	DilationFilter(Image &&structuringElement, Image& src);
 	DilationFilter(const DilationFilter &other) = delete;
-	int aply(Image *image);
+	int aply();
 	virtual ~DilationFilter();
 };
 
