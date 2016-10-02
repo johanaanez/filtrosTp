@@ -73,8 +73,8 @@ int DilationFilter::dilateBorder(int x, int y){
 		posY = y;
 	}
 
-	for(int i=0;i <dimensionX; i++){
-		for(int j=0; j< dimensionY ; j++){
+	for(int i=1;i <3; i++){
+		for(int j=1; j< 3 ; j++){
 			char c= this->getStructuringElement().getRepresentation()[i][j];
 			this->dest.setPixel(posX,posY,c);
 			posY++;
