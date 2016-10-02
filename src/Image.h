@@ -10,10 +10,13 @@ private:
 	int rows;
 	int columns;
 	vector<vector<char> > representation;
-
+	vector<vector<bool> > wasChanged;
 	//Aca se puede setear si inicialmente se desea que los 0 y 1 sean representados por otro caracter
 	const char ones = '#';
-    const char zeros = '.';
+	const char zeros = '.';
+
+	void initializeWasChanged();
+
 
 public:
 	Image();
@@ -36,20 +39,24 @@ public:
 	void setColumns(int columns);
 	int getRows() const;
 	void setRows(int rows);
-    vector<vector<char> > getRepresentation() const;
-    void setRepresentation(vector<vector<char> > representation);
-    const char getOnes() const;
-    const char getZeros() const;
-    char getCenter()const;
-    bool isCenter(int i,int j)const;
-    bool isCorner(int i,int j)const;
-    bool isBorder(const int i,const int j) const;
-    bool isTopBorder(const int i,const int j) const;
-    bool isRightBorder(const int i,const int j) const;
-    bool isLeftBorder(const int i,const int j) const;
-    bool isBottomBorder(const int i,const int j) const;
-    void setPixel(int posX, int posY, char c);
-    bool isEquals(const Image& other, int xDesde, int yDesde) const;
+	vector<vector<char> > getRepresentation() const;
+	void setRepresentation(vector<vector<char> > representation);
+	const char getOnes() const;
+	const char getZeros() const;
+	char getCenter()const;
+	bool isCenter(int i,int j)const;
+	bool isCorner(int i,int j)const;
+	bool isBorder(const int i,const int j) const;
+	bool isTopBorder(const int i,const int j) const;
+	bool isRightBorder(const int i,const int j) const;
+	bool isLeftBorder(const int i,const int j) const;
+	bool isBottomBorder(const int i,const int j) const;
+	void setPixel(int posX, int posY, char c);
+	bool isEquals(const Image& other, int xDesde, int yDesde) const;
+    vector<vector<bool> > getWasChanged() const;
+    void setWasChanged(vector<vector<bool> > wasChanged);
+    void setPixelWasChanged(int i, int j, bool wasChanged);
+
 };
 
 #endif /* IMAGE_H_ */

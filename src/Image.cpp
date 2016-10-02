@@ -1,5 +1,6 @@
 #include "Image.h"
 
+
 Image::Image() {
 	rows= 0 ;
 	columns = 0;
@@ -9,6 +10,9 @@ Image::Image(int rows, int columns, vector<vector<char>> matrix ){
 	this->representation = matrix;
 	this->rows = rows;
 	this->columns = columns;
+	//vector< vector< bool > > wasChanged( rows, vector<bool>( columns, false ) );
+	//this->wasChanged = wasChanged;
+	//initializeWasChanged();
 }
 
 
@@ -17,7 +21,6 @@ Image::Image(Image &&other){
 	this->columns = other.columns;
 	this->rows = other.rows;
 	this->representation = other.representation;
-
 	other.rows = 0;
 	other.columns = 0;
 	other.representation = vector< vector<char> >() ;
@@ -40,6 +43,27 @@ Image::~Image() {
 	rows= 0 ;
 	columns = 0;
 	representation = vector< vector<char> >() ;
+}
+
+vector<vector<bool> > Image::getWasChanged() const{
+    return wasChanged;
+}
+
+void Image::setWasChanged(vector<vector<bool> > wasChanged){
+    this->wasChanged = wasChanged;
+}
+
+void Image::initializeWasChanged(){
+
+	for(int i=0; i< this->rows;i++){
+		for(int j=0; j<this->columns; j++){
+			wasChanged.at(i).at(j) = false;
+		}
+	}
+}
+
+void Image::setPixelWasChanged(int i, int j, bool wasChanged){
+	this->wasChanged.at(i).at(j) = true;
 }
 
 int Image::transform(char zero, char one){
@@ -154,11 +178,14 @@ bool Image::isEquals(const Image &other,int xDesde,int yDesde) const{
 
 	int x = xDesde;
 	int y = yDesde;
+	char c, c2;
 
 	for(int i=0; i< this->rows; i++){
 		for(int j=0; j<columns; j++){
 			if(this->representation[i][j] == this->ones){
-				if(this->representation[i][j] != other.representation[x][y]){
+				c = this->representation[i][j];
+				c2 =  other.representation[x][y];
+				if( c!= c2){
 					return false;
 				}
 			}

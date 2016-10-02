@@ -68,17 +68,13 @@ int Filter::aply(){
 		return -1;
 	}
 
-	char p = this->getStructuringElement().getRepresentation()[0][0];
 	int i,j;
 
 	for( i=0;i <=rows; i++){
 		for( j=0; j<= columns ; j++){
-
-				if( this->structuringElement.isEquals(this->getSrc(),i, j) ){
-					erosion(i,j);
-				}
-
-
+			if( this->structuringElement.isEquals(this->getSrc(),i, j) ){
+				erosion(i,j);
+			}
 		}
 	}
 
@@ -95,9 +91,11 @@ int Filter::erosion(int x, int y){
 		for(int j=0; j< dimension ; j++){
 			if(this->getStructuringElement().isCenter(i,j)){
 				this->dest.setPixel(posX,posY,center);
+				//this->dest.setPixelWasChanged(posX,posY,true);
 			}
 			else{
-				this->dest.setPixel(posX,posY,zero);
+				//if(!this->dest.getWasChanged()[posX][posX])
+					this->dest.setPixel(posX,posY,zero);
 			}
 
 			posY++;

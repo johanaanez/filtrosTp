@@ -48,12 +48,16 @@ int main(int argc, char *argv[]) {
 	cout<<"\n";
 	f->aply();
 
+	//anda mal en el borde derecho
+
 	for(int i=0;i <rows; i++){
 		for(int j=0; j<columns; j++){
 			cout<<f->getDest().getRepresentation()[i][j];
 		}
 		cout<<endl;
 	}
+
+
 
 	vector<vector<char> > matrix2(rows, std::vector<char>(columns));
 	row1=  {'.','#','.','.','.', '.'};
@@ -73,8 +77,11 @@ int main(int argc, char *argv[]) {
 	Image image2(6,6,matrix2);
 	Filter *erosion = new Filter(patron,image2);
 	cout<<"\n";
+
+
 	erosion->aply();
 
+	cout<<"\n";
 	for(int i=0;i <rows; i++){
 		for(int j=0; j<columns; j++){
 			cout<<erosion->getDest().getRepresentation()[i][j];
