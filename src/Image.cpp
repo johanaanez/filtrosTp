@@ -147,12 +147,28 @@ void Image::setPixel(int posX, int posY, char c){
 	this->representation.at(posX).at(posY) = c;
 }
 
-bool Image::isEquals(const Image &other,int xDesde,int yDesde, int xHasta, int yHasta) const{
-	if(1>0){
-		return true;
+bool Image::isEquals(const Image &other,int xDesde,int yDesde) const{
+	//Compara los pixeles de la imagen this y la imagen other en los  pixeles
+	//this es el patron, other es la imagen
+	//Compara solos los bits en 1
+
+	int x = xDesde;
+	int y = yDesde;
+
+	for(int i=0; i< this->rows; i++){
+		for(int j=0; j<columns; j++){
+			if(this->representation[i][j] == this->ones){
+				if(this->representation[i][j] != other.representation[x][y]){
+					return false;
+				}
+			}
+			y++;
+		}
+		x++;
+		y = yDesde;
 	}
 
-	return false;
+	return true;
 }
 
 
