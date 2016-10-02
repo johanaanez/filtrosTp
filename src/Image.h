@@ -49,6 +49,7 @@ public:
     bool isLeftBorder(const int i,const int j) const;
     bool isBottomBorder(const int i,const int j) const;
     void setPixel(int posX, int posY, char c);
+    bool isEquals(const Image& other, int xDesde, int yDesde,  int xHasta, int yHasta) const;
 };
 
 #endif /* IMAGE_H_ */

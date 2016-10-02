@@ -73,7 +73,7 @@ int main(int argc, char *argv[]) {
 	Image image2(6,6,matrix2);
 	Filter *erosion = new Filter(patron,image2);
 	cout<<"\n";
-	//erosion->aply();
+	erosion->aply();
 
 	for(int i=0;i <rows; i++){
 		for(int j=0; j<columns; j++){

@@ -65,10 +65,6 @@ void Image::setRows(int rows) {
 	this->rows = rows;
 }
 
-
-
-
-
 vector<vector<char> > Image::getRepresentation() const{
     return representation;
 }
@@ -150,6 +146,15 @@ const char Image::getZeros() const{
 void Image::setPixel(int posX, int posY, char c){
 	this->representation.at(posX).at(posY) = c;
 }
+
+bool Image::isEquals(const Image &other,int xDesde,int yDesde, int xHasta, int yHasta) const{
+	if(1>0){
+		return true;
+	}
+
+	return false;
+}
+
 
 
 

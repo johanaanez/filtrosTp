@@ -60,19 +60,20 @@ void Filter::setDest(Image& dest){
 }
 
 int Filter::aply(){
-	int rows = this->getSrc().getRows();
-	int columns = this->getSrc().getColumns();
-	char center = this->structuringElement.getCenter();
+	int rows = this->getSrc().getRows()-this->getStructuringElement().getRows();
+	int columns = this->getSrc().getColumns()-this->getStructuringElement().getColumns();
 	int dimension = this->structuringElement.getRows();
 
 	if(dimension > rows || dimension > columns){
 		return -1;
 	}
 
-	for(int i=0;i <rows; i++){
-		for(int j=0; j< columns ; j++){
-			char c= this->getSrc().getRepresentation()[i][j];
-			if( c== center){
+	char p = this->getStructuringElement().getRepresentation()[0][0];
+
+	for(int i=0;i <=rows; i++){
+		for(int j=0; j<= columns ; j++){
+			char c = this->getSrc().getRepresentation()[i][j];
+			if( c == p ){
 				erosion(i,j);
 			}
 
@@ -100,18 +101,6 @@ int Filter::erosion(int x, int y){
 
 	return 0;
 }
-
-bool Filter::isTotalUnion(int x, int y){
-	/*if(){
-		return true;
-	}*/
-
-	return false;
-}
-bool Filter::isPartialUnion(int x, int y){
-	return false;
-}
-
 
 Filter::~Filter() {
 
