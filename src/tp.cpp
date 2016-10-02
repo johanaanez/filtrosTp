@@ -37,8 +37,6 @@ int main(int argc, char *argv[]) {
 	Image image(6,6,matrix);
 
 	DilationFilter *f = new DilationFilter(patron,image);
-	//f->setSrc(image);
-	//f->setStructuringElement(patron);
 
 	for(int i=0;i <rows; i++){
 				for(int j=0; j<columns; j++){
@@ -57,9 +55,25 @@ int main(int argc, char *argv[]) {
 		cout<<endl;
 	}
 
-	Filter *erosion = new Filter(patron,image);
+	vector<vector<char> > matrix2(rows, std::vector<char>(columns));
+	row1=  {'.','#','.','.','.', '.'};
+	row2=  {'#','#','#','.','.', '.'};
+	row3=  {'.','#','.','.','.', '.'};
+	row4=  {'.','.','#','#','#', '#'};
+	row5=  {'.','.','#','#','#', '#'};
+	row6=  {'.','.','#','#','#', '#'};
+
+	matrix2.at(0) = row1;
+	matrix2.at(1) =	row2;
+	matrix2.at(2) = row3;
+	matrix2.at(3) = row4;
+	matrix2.at(4) = row5;
+	matrix2.at(5) = row6;
+
+	Image image2(6,6,matrix2);
+	Filter *erosion = new Filter(patron,image2);
 	cout<<"\n";
-	erosion->aply();
+	//erosion->aply();
 
 	for(int i=0;i <rows; i++){
 		for(int j=0; j<columns; j++){
@@ -67,8 +81,6 @@ int main(int argc, char *argv[]) {
 		}
 		cout<<endl;
 	}
-
-
 
 	return 0;
 }
