@@ -45,7 +45,7 @@ Image::~Image() {
 	representation = vector< vector<char> >() ;
 }
 
-vector<vector<bool> > Image::getWasChanged() const{
+/*vector<vector<bool> > Image::getWasChanged() const{
     return wasChanged;
 }
 
@@ -60,11 +60,11 @@ void Image::initializeWasChanged(){
 			wasChanged.at(i).at(j) = false;
 		}
 	}
-}
+}*/
 
-void Image::setPixelWasChanged(int i, int j, bool wasChanged){
+/*void Image::setPixelWasChanged(int i, int j, bool wasChanged){
 	this->wasChanged.at(i).at(j) = true;
-}
+}*/
 
 int Image::transform(char zero, char one){
 	for(int i=0; i<rows; i++){

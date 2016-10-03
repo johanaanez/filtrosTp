@@ -63,6 +63,7 @@ int Filter::aply(){
 	int rows = this->getSrc().getRows()-this->getStructuringElement().getRows();
 	int columns = this->getSrc().getColumns()-this->getStructuringElement().getColumns();
 	int dimension = this->structuringElement.getRows();
+	int posXLastChanged = 0, posYLastChanged = 0;
 
 	if(dimension > rows || dimension > columns){
 		return -1;
@@ -73,7 +74,7 @@ int Filter::aply(){
 	for( i=0;i <=rows; i++){
 		for( j=0; j<= columns ; j++){
 			if( this->structuringElement.isEquals(this->getSrc(),i, j) ){
-				erosion(i,j);
+				erosion(i,j, &posXLastChanged ,  &posYLastChanged );
 			}
 		}
 	}
@@ -81,7 +82,7 @@ int Filter::aply(){
 	return 0;
 }
 
-int Filter::erosion(int x, int y){
+int Filter::erosion(int x, int y, int  *posXLastChanged , int *posYLastChanged){
 	int dimension = this->structuringElement.getRows();
 	char zero = this->getStructuringElement().getZeros();
 	char center = this->getStructuringElement().getCenter();
@@ -91,11 +92,14 @@ int Filter::erosion(int x, int y){
 		for(int j=0; j< dimension ; j++){
 			if(this->getStructuringElement().isCenter(i,j)){
 				this->dest.setPixel(posX,posY,center);
+				*posXLastChanged = posX;
+				*posYLastChanged = posY;
 				//this->dest.setPixelWasChanged(posX,posY,true);
 			}
 			else{
-				//if(!this->dest.getWasChanged()[posX][posX])
+				if( posY > *posYLastChanged || posX > *posXLastChanged){
 					this->dest.setPixel(posX,posY,zero);
+				}
 			}
 
 			posY++;

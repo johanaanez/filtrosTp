@@ -2,6 +2,7 @@
 #define IMAGE_H_
 
 #include <vector>
+#include "Pixel.h"
 using namespace std;
 
 class Image {

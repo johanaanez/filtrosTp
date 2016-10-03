@@ -10,7 +10,7 @@ class Filter {
 
 private:
 	int erosionBorder(int i, int j);
-	int erosion(int i, int j);
+	int erosion(int i, int j, int  *posXLastChanged , int *posYLastChanged);
 
 protected:
 	Image structuringElement;
