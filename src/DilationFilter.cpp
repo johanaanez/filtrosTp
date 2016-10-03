@@ -40,12 +40,7 @@ int DilationFilter::aply(){
 		for(int j=0; j< columns ; j++){
 			char c= this->getSrc().getRepresentation()[i][j];
 			if( c== center){
-				if(this->src.isBorder(i,j) && this->structuringElement.getColumns()>1){
-					dilateBorder(i,j);
-				}
-				else{
-					dilate(i,j);
-				}
+				dilate(i,j);
 			}
 		}
 
@@ -54,12 +49,11 @@ int DilationFilter::aply(){
 	return 0;
 }
 
-int DilationFilter::dilateBorder(int x, int y){
+int DilationFilter::dilate(int x, int y){
 	int dimension = this->structuringElement.getRows();
 	int med = dimension/2;
 	int posX = x-med;
 	int posY = y-med;
-
 	int iInitial=0 , jInitial, iFinal=dimension, jFinal=dimension;
 
 	if(this->src.isTopBorder(x,y)){
@@ -67,7 +61,6 @@ int DilationFilter::dilateBorder(int x, int y){
 		iInitial = med;
 		iFinal = dimension;
 	}
-
 	if(this->src.isLeftBorder(x,y)){
 		posY = y;
 		jInitial = med;
@@ -89,29 +82,9 @@ int DilationFilter::dilateBorder(int x, int y){
 			posY++;
 		}
 		posX++;
-		posY= posY- 2;
+		posY= posY- (jFinal-jInitial);
 	}
 
 	return 0;
 }
-
-int DilationFilter::dilate(int x, int y){
-	int dimension = this->structuringElement.getRows();
-	int resta = dimension/2;
-	int posX = x-resta;
-	int posY = y-resta;
-
-	for(int i=0;i <dimension; i++){
-		for(int j=0; j< dimension ; j++){
-			char c= this->getStructuringElement().getRepresentation()[i][j];
-			this->dest.setPixel(posX,posY,c);
-			posY++;
-		}
-		posX++;
-		posY= y-resta;
-	}
-
-	return 0;
-}
-
 
