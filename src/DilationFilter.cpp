@@ -56,55 +56,41 @@ int DilationFilter::aply(){
 
 int DilationFilter::dilateBorder(int x, int y){
 	int dimension = this->structuringElement.getRows();
-	int dimensionY = this->structuringElement.getRows();
-	int resta = dimension/2;
-	int posX = x-resta;
-	int posY = y-resta;
+	int med = dimension/2;
+	int posX = x-med;
+	int posY = y-med;
 
-	if(this->src.isCorner(x,y)){
-		int dimensionX = dimension- resta; //si el patron es de 3X3
-		dimensionY -= resta;
-	}
+	int iInitial=0 , jInitial, iFinal=dimension, jFinal=dimension;
 
 	if(this->src.isTopBorder(x,y)){
 		posX = x;
+		iInitial = med;
+		iFinal = dimension;
 	}
+
 	if(this->src.isLeftBorder(x,y)){
 		posY = y;
+		jInitial = med;
+		jFinal = dimension;
 	}
-
-	if(this->src.isTopBorder(x,y)){
-		for(int i=resta;i <dimension; i++){
-			for(int j=resta; j< dimension ; j++){
-				char c= this->getStructuringElement().getRepresentation()[i][j];
-				this->dest.setPixel(posX,posY,c);
-				posY++;
-			}
-			posX++;
-			posY= posY- dimensionY;
-		}
-	}
-
 	if(this->src.isBottomBorder(x,y)){
-		if(this->src.isLeftBorder(x,y)){
-				posY = y;
-		}
-
-		int posX = x-resta;
-
-		//DESDE QUE POSICION DEL PATRON HASTA CUAL SE VA A COPIAR?
-		for(int i=0;i <2; i++){
-			for(int j=1; j< 3 ; j++){
-				char c= this->getStructuringElement().getRepresentation()[i][j];
-				this->dest.setPixel(posX,posY,c);
-				posY++;
-			}
-			posX++;
-			posY= posY- dimensionY;
-		}
-
+		iInitial=0;
+		iFinal=dimension-med;
+	}
+	if(this->src.isRightBorder(x,y)){
+		jInitial = 0;
+		jFinal = dimension-med;
 	}
 
+	for(int i=iInitial;i <iFinal; i++){
+		for(int j= jInitial; j< jFinal ; j++){
+			char c= this->getStructuringElement().getRepresentation()[i][j];
+			this->dest.setPixel(posX,posY,c);
+			posY++;
+		}
+		posX++;
+		posY= posY- 2;
+	}
 
 	return 0;
 }

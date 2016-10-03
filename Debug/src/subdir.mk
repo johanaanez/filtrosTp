@@ -9,6 +9,7 @@ CPP_SRCS += \
 ../src/Filter.cpp \
 ../src/Image.cpp \
 ../src/Pattern.cpp \
+../src/Pixel.cpp \
 ../src/Thread.cpp \
 ../src/tp.cpp 
 
@@ -18,6 +19,7 @@ OBJS += \
 ./src/Filter.o \
 ./src/Image.o \
 ./src/Pattern.o \
+./src/Pixel.o \
 ./src/Thread.o \
 ./src/tp.o 
 
@@ -27,6 +29,7 @@ CPP_DEPS += \
 ./src/Filter.d \
 ./src/Image.d \
 ./src/Pattern.d \
+./src/Pixel.d \
 ./src/Thread.d \
 ./src/tp.d 
 

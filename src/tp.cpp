@@ -75,7 +75,6 @@ void test(){
 	Filter *erosion = new Filter(patron,image2);
 	cout<<"\n";
 
-
 	erosion->aply();
 
 	cout<<"\n";
