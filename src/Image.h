@@ -11,12 +11,10 @@ private:
 	int rows;
 	int columns;
 	vector<vector<char> > representation;
-	vector<vector<bool> > wasChanged;
+
 	//Aca se puede setear si inicialmente se desea que los 0 y 1 sean representados por otro caracter
 	const char ones = '#';
 	const char zeros = '.';
-
-	void initializeWasChanged();
 
 
 public:
@@ -54,9 +52,7 @@ public:
 	bool isBottomBorder(const int i,const int j) const;
 	void setPixel(int posX, int posY, char c);
 	bool isEquals(const Image& other, int xDesde, int yDesde) const;
-    vector<vector<bool> > getWasChanged() const;
-    void setWasChanged(vector<vector<bool> > wasChanged);
-    void setPixelWasChanged(int i, int j, bool wasChanged);
+
 
 };
 

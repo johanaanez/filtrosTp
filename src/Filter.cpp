@@ -94,7 +94,6 @@ int Filter::erosion(int x, int y, int  *posXLastChanged , int *posYLastChanged){
 				this->dest.setPixel(posX,posY,center);
 				*posXLastChanged = posX;
 				*posYLastChanged = posY;
-				//this->dest.setPixelWasChanged(posX,posY,true);
 			}
 			else{
 				if( posY > *posYLastChanged || posX > *posXLastChanged){

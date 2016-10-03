@@ -10,9 +10,6 @@ Image::Image(int rows, int columns, vector<vector<char>> matrix ){
 	this->representation = matrix;
 	this->rows = rows;
 	this->columns = columns;
-	//vector< vector< bool > > wasChanged( rows, vector<bool>( columns, false ) );
-	//this->wasChanged = wasChanged;
-	//initializeWasChanged();
 }
 
 
@@ -44,27 +41,6 @@ Image::~Image() {
 	columns = 0;
 	representation = vector< vector<char> >() ;
 }
-
-/*vector<vector<bool> > Image::getWasChanged() const{
-    return wasChanged;
-}
-
-void Image::setWasChanged(vector<vector<bool> > wasChanged){
-    this->wasChanged = wasChanged;
-}
-
-void Image::initializeWasChanged(){
-
-	for(int i=0; i< this->rows;i++){
-		for(int j=0; j<this->columns; j++){
-			wasChanged.at(i).at(j) = false;
-		}
-	}
-}*/
-
-/*void Image::setPixelWasChanged(int i, int j, bool wasChanged){
-	this->wasChanged.at(i).at(j) = true;
-}*/
 
 int Image::transform(char zero, char one){
 	for(int i=0; i<rows; i++){

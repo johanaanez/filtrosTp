@@ -2,11 +2,8 @@
 using namespace std;
 #include <vector>
 #include "DilationFilter.h"
-#include "Filter.h"
-#include "Image.h"
 
-int main(int argc, char *argv[]) {
-
+void test(){
 	int rows=3;
 	int columns=3;
 	vector<vector<char> > pattern(rows, std::vector<char>(columns));
@@ -88,6 +85,12 @@ int main(int argc, char *argv[]) {
 		}
 		cout<<endl;
 	}
+
+}
+
+int main(int argc, char *argv[]) {
+
+	test();
 
 	return 0;
 }
